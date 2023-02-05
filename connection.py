@@ -3,8 +3,10 @@ import psycopg2.extras
 from dotenv import load_dotenv
 import os
 
+
 #  ========== DATABASE CONNECTION ==========
-database_url = "postgresql://postgres:postgres@localhost:5432/flask-todo"
+load_dotenv()
+database_url = os.getenv("DATABASE_URL")
 
 client = psycopg2.connect(database_url)
 db = client.cursor(cursor_factory=psycopg2.extras.DictCursor)
